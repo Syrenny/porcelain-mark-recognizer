@@ -1,5 +1,13 @@
+import os
 import streamlit as st
 import requests
+
+
+if os.getenv('RUNNING_IN_DOCKER', 'false').lower() == 'true':
+    engine_url = "http://search-engine:8502/predict"
+else:
+    engine_url = "http://127.0.0.1:8502/predict"
+
 
 st.title("Определитель марок фарфоровых изделий")
 
@@ -10,7 +18,7 @@ if uploaded_file:
     st.image(uploaded_file, caption="Загруженное изображение", width=250)
     if st.button("Определить марку"):
         files = {"file": uploaded_file.getvalue()}
-        response = requests.post("http://localhost:8000/predict", files=files)
+        response = requests.post(engine_url, files=files)
 
         if response.status_code == 200:
             results = response.json()["predictions"]

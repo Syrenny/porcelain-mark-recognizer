@@ -18,14 +18,14 @@ uv pip install -r requirements.txt
 1. **Запуск backend**
 
 ```bash
-python3 -m search-engine.main
+python3 -m search_engine.app.main
 ```
 
 2. **Запуск streamlit (в другом терминале)**
 
 ```bash
 . .venv/bin/activate
-streamlit run frontend.streamlit_app --server.port=8501 --server.address=0.0.0.0
+streamlit run frontend/streamlit_app.py --server.port=8501 --server.address=0.0.0.0
 ```
 
 ### Запуск с помощью docker

@@ -2,7 +2,25 @@ services:
   frontend:
     build:
       context: ./frontend/
-    container_name: streamlit-frontend 
+    container_name: streamlit-frontend
+    environment:
+      - RUNNING_IN_DOCKER=true
     ports:
       - 8501:8501
-    
+    networks:
+      - app-network
+    depends_on:
+      - search-engine
+
+  search-engine:
+    build:
+      context: ./search-engine/
+    container_name: search-engine
+    ports:
+      - 8502:8502
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

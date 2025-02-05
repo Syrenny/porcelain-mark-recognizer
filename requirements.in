@@ -1,0 +1,21 @@
+# Base
+python-dotenv
+pydantic-settings
+
+# Backend
+fastapi
+uvicorn
+python-multipart
+
+# Search engine
+scipy
+
+# Detector
+ultralytics
+onnxruntime-gpu
+
+# Inference
+onnxruntime
+
+# frontend
+streamlit
